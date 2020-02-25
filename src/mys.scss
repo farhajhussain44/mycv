@@ -1,0 +1,432 @@
+/* 
+
+Code this website with me in a video codealong:
+https://youtu.be/wBQvr57UD2U
+
+Github repo for a better folder structure:
+https://github.com/FilipRastovic/clean-resume
+
+*/
+
+// Set a custom color
+$blue: #4A90E2 !default;
+$bg: #E9EDF0;
+body {
+  background: #000;
+}
+
+$content-bg-light: #F8F9FA;
+$content-bg-dark: #1e1f26;
+
+$card-bg-light: #fff;
+$card-bg-dark: #202229;
+
+// Set primary color to orange
+$primary: $blue !default;
+
+// Font overrides
+$font-family-sans-serif: "Merriweather Sans",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+"Noto Sans",
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol",
+'Noto Color Emoji' !default;
+
+$font-family-serif: "Merriweather",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+"Noto Sans",
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol",
+'Noto Color Emoji' !default;
+
+$font-family-base: $font-family-serif !default;
+
+$headings-font-family: $font-family-sans-serif !default;
+
+html,
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	background: #fafafa;
+	overflow-x: hidden;
+
+
+	@media (min-width: 768px) {
+		overflow-y: hidden;
+	}
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 1.5;
+}
+
+h1 {
+	font-size: 48px;
+}
+
+h2 {
+	font-size: 32px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+h4 {
+	font-size: 20px;
+}
+
+h5 {
+	font-size: 16px;
+}
+
+h6 {
+	font-size: 14px;
+	margin-bottom: 6px;
+}
+
+p {
+	font-size: 14px;
+}
+
+p.large-copy {
+	font-size: 16px;
+}
+
+p.copy {
+	font-size: 14px;
+}
+
+.caption {
+	font-size: 12px;
+}
+
+@mixin text-link--large {
+	font-size: 16px;
+}
+
+.text-link--small {
+	font-size: 14px;
+}
+
+label,
+.label {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.label-large {
+	font-size: 16px;
+}
+
+.wrapper .container {
+	border-radius: 6px;
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+
+	@media (min-width: 1400px) {
+		margin: 50px auto;
+	}
+}
+
+.background-blue {
+	background: $blue;
+}
+
+.blue {
+	color: $blue;
+}
+
+.sidebar {
+	padding: 32px;
+
+	img {
+		box-shadow: 0 1px 32px rgba(20, 23, 26, 0.12);
+	}
+
+	figcaption {
+		margin-top: 32px;
+		font-size: 48px;
+		font-weight: 600;
+		line-height: 1;
+
+		small {
+			font-size: 32px;
+			font-weight: inherit;
+		}
+	}
+
+	.main-menu {
+		li {
+			border-bottom: 1px solid #fff;
+			padding: 15px 0;
+			transition: .3s ease-out;
+
+			a {
+				@include text-link--large;
+				transition: inherit;
+
+				i {
+					margin: 0 12px 0 18px;
+				}
+			}
+
+		}
+	}
+}
+
+.content {
+	padding: 20px 15px;
+	background: $content-bg-light;
+	display: none;
+
+	&.active {
+		display: block;
+	}
+
+
+
+	@media (min-width: 768px) {
+		height: 703px;
+		padding: 40px 35px;
+		animation: .3s ease 1 slideInFromRight;
+	}
+
+}
+
+.slide-to-right {
+	animation: 1s ease 1 slideToRight;
+}
+
+@keyframes slideToRight {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(120%);
+	}
+}
+
+@keyframes slideInFromRight {
+	0% {
+		transform: translateX(120%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.card {
+	padding: 25px;
+	border-color: transparent;
+	box-shadow: 0 1px 32px rgba(20, 23, 26, 0.12);
+	transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+	border-radius: 3px;
+	background-color: $card-bg-light; //$card-bg-light;
+
+	p {
+
+		&:last-of-type {
+			margin-bottom: 35px;
+		}
+	}
+
+	// Profesisonal title of the person.
+	.title {
+		color: $blue;
+
+		i {
+			margin-right: 5px;
+		}
+	}
+
+	// Styles for the "interests" section of the main card.
+	.interests {
+		.col-md-2 {
+			&:hover {
+				background: #fafafa;
+			}
+		}
+
+		i {
+			font-size: 30px;
+			color: $blue;
+		}
+	}
+
+	// Styles for the little cards that contain stats of the person.
+	&--stats {
+
+		padding: 15px 10px;
+
+		i {
+			font-size: 30px;
+			color: $blue;
+		}
+
+		p {
+			font-size: 12px;
+			color: $blue;
+		}
+
+	}
+}
+
+.sideline {
+	overflow: hidden;
+
+	&:before,
+	&:after {
+		background-color: #000;
+		content: "";
+		display: inline-block;
+		height: 1px;
+		position: relative;
+		vertical-align: middle;
+		width: 50%;
+	}
+
+	&:before {
+		right: 0.5em;
+		margin-left: -50%;
+	}
+
+	&:after {
+		left: 0.5em;
+		margin-right: -50%;
+	}
+}
+
+.timeline {
+
+	.job-date {
+		font-size: 14px;
+	}
+
+	@media (min-width: 992px) {
+		.job-date {
+			text-align: right;
+			position: relative;
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: -5px;
+				width: 10px;
+				height: 10px;
+				border-radius: 150%;
+				background-color: $blue;
+				z-index: 3;
+				margin-top: 6px;
+			}
+		}
+
+		.job-description {
+			position: relative;
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 1px;
+				height: 100%;
+				background-color: grey;
+				z-index: 2;
+			}
+		}
+	}
+}
+
+.filter-controls {
+
+	li {
+		box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+		padding: 7px 11px;
+		background: #fafafa;
+		margin-right: 0;
+		margin-bottom: 0.5rem;
+		transition: .3s ease-in;
+
+		&.active {
+			background: $blue;
+			color: #fff;
+		}
+
+		@media (max-width: 768px) {
+			display: block;
+			margin-right: 0.5rem;
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $blue;
+			color: #fff;
+			cursor: pointer;
+		}
+	}
+}
+
+/* Flaired edges, by Tomas Theunissen */
+.hr-container {
+	width: 100px;
+	height: 1px;
+	background-color: black;
+	position: relative;
+
+	.circle {
+		display: inline-block;
+		vertical-align: middle;
+		width: 10px;
+		height: 10px;
+		background-color: white;
+		border: solid 1px black;
+		border-radius: 50%;
+		position: absolute;
+		top: -6px;
+		left: calc(50% - 5px);
+	}
+
+}
+
+.hr-blue {
+	margin-top: 20px;
+	background: #3EB2EF;
+}
+
+.hr-blue .circle {
+	background: #3EB2EF;
+	border-color: #3EB2EF;
+}
